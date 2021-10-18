@@ -28,7 +28,7 @@ const Benner = () => {
                     />
 
                     <Carousel.Caption className='slider-content'>
-                    <h1 className='text-uppercase w-50 mx-auto fw-bold'>Reach your goal at fitness-gure</h1>
+                    <h1 className='text-uppercase w-50 mx-auto fw-bold'>Reach your goal at     fitness-club</h1>
                     <p className='w-75 mx-auto mt-3'>It’s well documented that weight-bearing exercise strengthens bones and helps ward off osteoporosis. Many postures in yoga require that you lift your own weight.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -40,7 +40,7 @@ const Benner = () => {
                     />
 
                     <Carousel.Caption className='slider-content'>
-                    <h1 className='text-uppercase w-50 mx-auto fw-bold'>Reach your goal at fitness-gure</h1>
+                    <h1 className='text-uppercase w-50 mx-auto fw-bold'>healthy mind, healthy body</h1>
                     <p className='w-75 mx-auto mt-3'>It’s well documented that weight-bearing exercise strengthens bones and helps ward off osteoporosis. Many postures in yoga require that you lift your own weight.</p>
                     </Carousel.Caption>
                 </Carousel.Item>

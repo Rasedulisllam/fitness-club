@@ -1,0 +1,26 @@
+
+.footer-main{
+    background: linear-gradient(0deg, rgba(17, 47, 43, 0.548), rgba(5, 5, 5, 0.705)), url('../../images/footerbg1.png') no-repeat;
+    background-size: cover;
+    background-position:center;
+    padding-top: 3rem;
+    color:white;
+}
+.footer-main h2{
+    border-bottom: 1px solid rgba(221, 221, 221, 0.527);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    padding-bottom: .4rem;
+}
+.footer-social{
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+.footer-social li{
+    padding-right: .7rem;
+    transition: .3s;
+}
+.footer-social li:hover{
+    color:aqua;
+}
