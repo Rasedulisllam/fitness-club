@@ -1,0 +1,20 @@
+.nav-card{
+    position:relative;
+}
+.card-count{
+    position: absolute;
+    top:0;
+    left:50%;
+    width:20px;
+    height:20px;
+    background-color:tomato;
+    display: block;
+    border-radius: 50%;
+    color:white;
+    line-height: 20px;
+}
+
+.nav-btn{
+    border-radius: 20px;
+    background-color: tomato;
+}

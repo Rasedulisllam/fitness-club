@@ -1,0 +1,14 @@
+
+.notFound{
+    height: 100vh;
+    position:relative;
+    background-color: #afafaf;
+}
+.notFound img{
+    height: 100%;
+}
+.notFound-btn{
+    position:absolute;
+    left:48%;
+    bottom: 10%;
+}
