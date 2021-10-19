@@ -1,0 +1,38 @@
+
+.login-main{
+    background-image: url('../../../images/banner/login_bg.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login{
+    width:30%;
+    padding:.5rem;
+}
+.input-field{
+    display: block;
+    width:100%;
+    
+    background-color: rgb(230, 230, 230);
+    border:0;
+    border-radius: .5rem;
+    padding:.9rem 1rem;
+}
+.input-field:focus{
+    outline: none;
+}
+.input-field-btn{
+    display: block;
+    width:100%;
+    margin:.5rem 0;
+    border:0;
+    border-radius: .5rem;
+    padding:.9rem 1rem;
+}
+.invalid{
+    border:1px solid rgba(255, 99, 71, 0.602);
+    box-shadow: 1px 1px 10px rgba(255, 71, 71, 0.616);
+}

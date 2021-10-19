@@ -7,9 +7,9 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar sticky="top"  bg="light" expand="lg">
             <Container>
-            <Navbar.Brand href="#" className='fw-bold'><img width='44px' className='img-fluid me-2' src={brand} alt="" />FITNESS-GURU</Navbar.Brand>
+            <Navbar.Brand href="#" className='fw-bold'><img width='44px' className='img-fluid me-2' src={brand} alt="" />FITNESS-CLUB</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll" className='justify-content-between ms-4'>
                 <Nav

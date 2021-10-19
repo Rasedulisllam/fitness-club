@@ -6,6 +6,9 @@ import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import NotFound from './pages/NotFound/NotFound';
 import Home from './pages/home/Home/Home';
 import Footer from './pages/Footer/Footer';
+import ServiceDetails from './pages/home/ServiceDetails/ServiceDetails';
+import Login from './pages/authentication/Login/Login';
+import Register from './pages/authentication/Register/Register';
 
 function App() {
   return (
@@ -16,8 +19,17 @@ function App() {
           <Route exact path='/'>
            <Home></Home>
           </Route>
-          <Route exact path='/home'>
+          <Route path='/home'>
             <Home></Home>
+          </Route>
+          <Route path='/serviceDetail/:serviceKey'>
+            <ServiceDetails></ServiceDetails>
+          </Route>
+          <Route path='/signIn'>
+            <Login></Login>
+          </Route>
+          <Route path='/register'>
+            <Register></Register>
           </Route>
           <Route path='*'>
             <NotFound></NotFound>

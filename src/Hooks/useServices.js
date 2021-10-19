@@ -1,7 +1,8 @@
-import React from 'react';
+import  { useEffect, useState } from 'react';
 
 const useServices = () => {
-    const services=[
+    const [services,setServices]=useState([])
+    const servicesData=[
         {
             key:1,
             name:'stretching',
@@ -85,11 +86,15 @@ const useServices = () => {
         },
     ]
 
-    return (
-        <div>
-            
-        </div>
-    );
+    useEffect(()=>{
+        setServices(servicesData)
+    },[])
+
+
+    return {
+        services,
+        setServices,
+    }
 };
 
 export default useServices;
