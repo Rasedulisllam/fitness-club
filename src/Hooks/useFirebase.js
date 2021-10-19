@@ -9,7 +9,7 @@ const auth = getAuth();
 const useFirebase = () => {
     const [user,setUser]=useState({})
     const [err,setErr]=useState('')
-    const [IsLoading,setIsLoading]=useState(false)
+    const [IsLoading,setIsLoading]=useState(true)
 
     // google sign in handle
     const googleSignIn=()=>{
