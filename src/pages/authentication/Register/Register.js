@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import brand from '../../../images/logo/logo1.png'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {BsGoogle} from 'react-icons/bs'
+import useAuth from '../../../Hooks/useAuth';
 
 
 const Register = () => {
-
+  const {googleSignIn,createNewUser}=useAuth()
+  const [isSamePassword,setIsSamePassword]=useState(true)
   const {
     register,
     handleSubmit,
@@ -15,7 +17,21 @@ const Register = () => {
     trigger,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  // handle google sign in btn
+  const handleGoogleSignIn=()=>{
+      googleSignIn();
+  }
+
+  // handle from data
+  const onSubmit = (data) => {
+    const{RePassword,password}=data;
+    setIsSamePassword(true)
+    if(RePassword !==password ){
+      setIsSamePassword(false);
+      return;
+    }
+    createNewUser(data)
+  };
 
   return (
     <div className='login-main'>
@@ -26,11 +42,11 @@ const Register = () => {
         </div>
         <form  onSubmit={handleSubmit(onSubmit)}>
           <div className='my-3'>
-          <input className={`input-field ${errors.Name && 'invalid'}`} placeholder='Name' 
-          {...register("Name",
+          <input className={`input-field ${errors.name && 'invalid'}`} placeholder='Name' 
+          {...register("name",
           {required:'Name is Require.'})}
           type='text'
-          onKeyUp={()=>trigger('Name')}
+          onKeyUp={()=>trigger('name')}
            />
           {errors.Name && <small className='text-danger'>{errors.Name.message}</small>}
           </div>
@@ -53,7 +69,7 @@ const Register = () => {
           <input className={`input-field ${errors.password && 'invalid'}`} {...register("password", {
             required: "Password is required",
             minLength: {
-              value: 5,
+              value: 6,
               message: "Min length is 5"
             }
           })}
@@ -65,10 +81,10 @@ const Register = () => {
           </div>
          
           <div className='my-3'>
-          <input className={`input-field ${errors.RePassword && 'invalid'}`} placeholder='Re-Password' {...register("RePassword", {
+          <input className={`input-field ${(errors.RePassword || !isSamePassword) && 'invalid'}`} placeholder='Re-Password' {...register("RePassword", {
               required: "Please enter re-password",
               minLength: {
-                value: 5,
+                value: 6,
                 message: "Min length is 5"
               }
             })}
@@ -84,7 +100,7 @@ const Register = () => {
         <div className='text-white my-3'>
           <h2 className='text-center'>Or</h2>
           <span>Login with: </span>
-          <Button className='ms-2 px-4' variant='danger'>
+          <Button className='ms-2 px-4' variant='danger' onClick={handleGoogleSignIn}>
               <BsGoogle ></BsGoogle>
           </Button>
       </div>

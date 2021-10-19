@@ -5,9 +5,17 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import {BsGoogle} from 'react-icons/bs'
+import useAuth from '../../../Hooks/useAuth';
 
 
 const Login = () => {
+
+  const {loginUser,googleSignIn}=useAuth()
+
+   // handle google sign in btn
+   const handleGoogleSignIn=()=>{
+    googleSignIn();
+    }
 
   const {
     register,
@@ -16,7 +24,9 @@ const Login = () => {
     trigger,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) =>{
+      loginUser(data)
+  };
 
   return (
     <div className='login-main'>
@@ -44,8 +54,8 @@ const Login = () => {
           <input className={`input-field ${errors.password && 'invalid'}`} {...register("password", {
             required: "Password is required",
             minLength: {
-              value: 5,
-              message: "Min length is 5"
+              value: 6,
+              message: "Min length is 6"
             }
           })}
           placeholder='Password'
@@ -61,7 +71,7 @@ const Login = () => {
         <div className='text-white my-3'>
           <h2 className='text-center'>Or</h2>
           <span>Login with: </span>
-          <Button className='ms-2 px-4' variant='danger'>
+          <Button className='ms-2 px-4' onClick={handleGoogleSignIn} variant='danger'>
               <BsGoogle ></BsGoogle>
           </Button>
       </div>

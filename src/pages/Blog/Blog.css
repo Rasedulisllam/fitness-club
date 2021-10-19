@@ -1,0 +1,9 @@
+.blog-auth{
+   text-transform: uppercase;
+}
+.blog-auth li{
+    margin-right: .9rem;
+}
+.blog-btn{
+    display: inline-block !important;
+}

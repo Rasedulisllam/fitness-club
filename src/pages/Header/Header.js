@@ -4,8 +4,16 @@ import brand from '../../images/logo/logo2.png'
 import {FiShoppingCart} from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import './Header.css'
+import useAuth from '../../Hooks/useAuth';
 
 const Header = () => {
+    const {user,Logout}=useAuth();
+
+    // handle logout btn
+    const handleLogout=()=>{
+        Logout();
+    }
+
     return (
         <Navbar sticky="top"  bg="light" expand="lg">
             <Container>
@@ -20,17 +28,32 @@ const Header = () => {
                     <Nav.Link as={Link} to="/home">Home</Nav.Link>
                     <Nav.Link as={Link} to="/service">Service</Nav.Link>
                     <Nav.Link as={Link} to="/tips">Tips &#38; Gellary</Nav.Link>
-                    <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
+                    <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                 </Nav>
                 <Nav className='align-items-center fw-bold'>
-                    <Nav.Link as={Link} to="/card" className='nav-card'>
+                    <Nav.Link as={Link} to="/card" className='nav-card me-3'>
                         <FiShoppingCart></FiShoppingCart> 
                         <span className='card-count'>0</span>
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/signIn" className='mx-2'>SignIn</Nav.Link>
-                    <Nav.Link as={Link} to="/register">
-                        <Button variant="danger nav-btn">Register</Button>
-                    </Nav.Link>
+
+                    {
+                        user?.email?(
+                            <div className='d-flex align-items-center'>
+                                <Nav.Link className='text-danger fw-bold'>{user?.email? user.displayName: ''}</Nav.Link>
+                                <Nav.Link as={Link} to="/register">
+                                    <Button variant="danger nav-btn" onClick={handleLogout}>Logout</Button>
+                                </Nav.Link>
+                            </div>
+                        ):(
+                            <div className='d-flex align-items-center'>
+                                <Nav.Link as={Link} to="/signIn" className='mx-2'>SignIn</Nav.Link>
+                                <Nav.Link as={Link} to="/register">
+                                    <Button variant="danger nav-btn">Register</Button>
+                                </Nav.Link>
+                            </div>
+                        )
+                    }
+  
                 </Nav>
                 
             </Navbar.Collapse>
