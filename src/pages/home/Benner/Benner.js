@@ -10,7 +10,7 @@ const Benner = () => {
             <Carousel fade className='slider'>
                 <Carousel.Item className='slider-item'>
                     <img
-                    className="d-block w-100 slider-img"
+                    className="d-block w-100 slider-img  h-100"
                     src=" https://i.ibb.co/wN95vNk/pexels-andrea-piacquadio-3772502.jpg"
                     alt="First slide"
                     />
@@ -22,7 +22,7 @@ const Benner = () => {
                 </Carousel.Item>
                 <Carousel.Item className='slider-item'>
                     <img
-                    className="d-block w-100 slider-img"
+                    className="d-block w-100 slider-img  h-100"
                     src="https://i.ibb.co/L5VTXwN/weight-lifting-g473ed8eba-1920.jpg"
                     alt="Second slide"
                     />
@@ -34,7 +34,7 @@ const Benner = () => {
                 </Carousel.Item>
                 <Carousel.Item className='slider-item'>
                     <img
-                    className="d-block w-100 slider-img"
+                    className="d-block w-100 slider-img  h-100"
                     src="https://i.ibb.co/mhWWXKf/man-g5d74bd3ed-1920.jpg"
                     alt="Third slide"
                     />

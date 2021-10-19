@@ -1,0 +1,13 @@
+
+.tainer-header{
+    background: linear-gradient(0deg, rgba(17, 47, 43, 0.548), rgba(5, 5, 5, 0.705)), url('../../images/pexels-victor-freitas-84113.png') no-repeat;
+    background-size: cover;
+    background-position:center;
+    padding: 1rem;
+    color:white;
+
+}
+.trainer-top h2{
+    border-bottom: 1px solid #ddd;
+    padding:.4rem 0;
+}

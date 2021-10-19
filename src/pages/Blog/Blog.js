@@ -7,10 +7,10 @@ const Blog = (props) => {
     return (
         <div className='text-start p-4 border-0 mb-5'>
             <h3 className='text-white'>{title}</h3>
-            <ul className='d-flex list-unstyled blog-auth text-muted'>
-                <li>On: {date}</li>
-                <li>by: {blogCreator}</li>
-                <li>tgged: {cetagory} </li>
+            <ul className='d-flex list-unstyled blog-auth text-muted flex-md-row flex-column'>
+                <li className='my-1 my-md-0'>On: {date}</li>
+                <li className='my-1 my-md-0'>by: {blogCreator}</li>
+                <li className='my-1 my-md-0'>tgged: {cetagory} </li>
             </ul>
             <img className='img-fluid' src={img} alt="" />
             <p className='my-4 text-muted'>{details}</p>

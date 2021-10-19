@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Fitness-Club
+When you are looking for a Personal Trainer it is important to choose the right Trainer to suit your needs, goals and personality.
 
 ## Available Scripts
 

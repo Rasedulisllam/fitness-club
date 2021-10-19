@@ -12,7 +12,7 @@ const Footer = () => {
         <div className='footer-main'>
             <Container>
                 <Row>
-                    <Col md={4} className='text-start px-5'>
+                    <Col md={4} className='text-start px-5 '>
                         <h2>About</h2>
                         <p className='text-muted'>Yoga does not remove us from the reality or responsibilities of everyday life but rather places our feet firmly.</p>
                         <h2>Recent post</h2>
@@ -23,7 +23,7 @@ const Footer = () => {
                         <Button variant='link' className='text-danger m-0 p-0'>Read more</Button>
                     </Col>
 
-                    <Col md={4} className=' px-5'>
+                    <Col md={4} className=' px-5 mt-md-0 mt-5 '>
                         <h2>opening hours</h2>
                         <ListGroup variant="flush" className='bg-transparent'>
                             <ListGroup.Item className='bg-transparent text-white d-flex justify-content-between  '>
@@ -63,7 +63,7 @@ const Footer = () => {
                         </ListGroup>
                     </Col>
 
-                    <Col md={4} className='text-start  px-5'>
+                    <Col md={4} className='text-start  mt-md-0 mt-5  px-5'>
                         <h2>contact info</h2>
                         <p>210,green-road,Dhaka</p>
                         <p>Email: <span className='text-danger'>fitnessclub@gmail.com</span></p>

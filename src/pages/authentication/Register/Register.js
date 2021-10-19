@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import brand from '../../../images/logo/logo1.png'
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link,useLocation,useHistory } from 'react-router-dom';
 import {BsGoogle} from 'react-icons/bs'
 import useAuth from '../../../Hooks/useAuth';
 
 
 const Register = () => {
-  const {googleSignIn,createNewUser}=useAuth()
+  const location=useLocation()
+  const history = useHistory()
+  const redirect_url=location?.state?.from || '/';
+  const {googleSignIn,createNewUser,setUser,setErr,setIsLoading,updateUserName}=useAuth()
   const [isSamePassword,setIsSamePassword]=useState(true)
+
   const {
     register,
     handleSubmit,
@@ -19,18 +23,33 @@ const Register = () => {
 
   // handle google sign in btn
   const handleGoogleSignIn=()=>{
-      googleSignIn();
+    googleSignIn()
+    .then(result=> {
+        setUser(result.user)
+        history.push(redirect_url)
+    })
+    .catch(err => setErr(err.message))
+    .finally(()=>setIsLoading(false))
   }
 
   // handle from data
   const onSubmit = (data) => {
-    const{RePassword,password}=data;
+    const{RePassword,password,name}=data;
     setIsSamePassword(true)
     if(RePassword !==password ){
       setIsSamePassword(false);
       return;
     }
     createNewUser(data)
+        .then((createResult) => {
+          setUser(createResult.user)
+          updateUserName(name)
+          history.push(redirect_url)
+        })
+        .catch((error) => {
+          setErr(error.message)
+        })
+        .finally(()=>setIsLoading(false))
   };
 
   return (
@@ -100,7 +119,7 @@ const Register = () => {
         <div className='text-white my-3'>
           <h2 className='text-center'>Or</h2>
           <span>Login with: </span>
-          <Button className='ms-2 px-4' variant='danger' onClick={handleGoogleSignIn}>
+          <Button className='ms-2 px-4' variant='primary' onClick={handleGoogleSignIn}>
               <BsGoogle ></BsGoogle>
           </Button>
       </div>

@@ -2,20 +2,42 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import brand from '../../../images/logo/logo1.png'
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link,useLocation,useHistory } from 'react-router-dom';
 import './Login.css'
 import {BsGoogle} from 'react-icons/bs'
 import useAuth from '../../../Hooks/useAuth';
 
 
 const Login = () => {
-
-  const {loginUser,googleSignIn}=useAuth()
+  const location=useLocation()
+  const history = useHistory()
+  const redirect_url=location?.state?.from || '/';
+  const {loginUser,googleSignIn,setUser,setErr,setIsLoading}=useAuth()
 
    // handle google sign in btn
    const handleGoogleSignIn=()=>{
-    googleSignIn();
+        googleSignIn()
+          .then(result=> {
+              setUser(result.user)
+              history.push(redirect_url)
+          })
+          .catch(err => setErr(err.message))
+          .finally(()=>setIsLoading(false))
     }
+
+    // handle login system
+    const onSubmit = (data) =>{
+      loginUser(data)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          setUser(user)
+          history.push(redirect_url)
+        })
+        .catch((error) => {
+            setErr(error.message)
+        })
+        .finally(()=>setIsLoading(false))
+    };
 
   const {
     register,
@@ -24,9 +46,6 @@ const Login = () => {
     trigger,
   } = useForm();
 
-  const onSubmit = (data) =>{
-      loginUser(data)
-  };
 
   return (
     <div className='login-main'>
@@ -71,7 +90,7 @@ const Login = () => {
         <div className='text-white my-3'>
           <h2 className='text-center'>Or</h2>
           <span>Login with: </span>
-          <Button className='ms-2 px-4' onClick={handleGoogleSignIn} variant='danger'>
+          <Button className='ms-2 px-4' onClick={handleGoogleSignIn} variant='primary'>
               <BsGoogle ></BsGoogle>
           </Button>
       </div>

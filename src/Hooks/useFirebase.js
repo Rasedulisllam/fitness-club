@@ -9,17 +9,12 @@ const auth = getAuth();
 const useFirebase = () => {
     const [user,setUser]=useState({})
     const [err,setErr]=useState('')
-    const [IsLoading,setIsLoading]=useState(true)
+    const [IsLoading,setIsLoading]=useState(false)
 
     // google sign in handle
     const googleSignIn=()=>{
         setIsLoading(true)
-        signInWithPopup(auth,googleProvider)
-            .then(result=> {
-                setUser(result.user)
-            })
-            .catch(err => setErr(err.message))
-            .finally(()=>setIsLoading(false))
+        return signInWithPopup(auth,googleProvider)
     }
 
     // update user profile name
@@ -27,7 +22,7 @@ const useFirebase = () => {
         updateProfile(auth.currentUser, {
             displayName:name
           }).then((res) => {
-            auth.getInstance().getCurrentUser().reload()
+              auth.getInstance().getCurrentUser().reload()
           }).catch((error) => {
             setErr(error.message)
           });
@@ -36,36 +31,20 @@ const useFirebase = () => {
     // create new user system
     const createNewUser=(data)=>{
         setIsLoading(true)
-        const {email,password,name}=data;
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((createResult) => {
-                setUser(createResult.user)
-                updateUserName(name)
-            })
-            .catch((error) => {
-               setErr(error.message)
-            })
-            .finally(()=>setIsLoading(false))
+        const {email,password}=data;
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // user sign in system
     const loginUser=(data)=>{
         setIsLoading(true)
         const {email,password}=data;
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                setUser(user)
-            })
-            .catch((error) => {
-                setErr(error.message)
-            })
-            .finally(()=>setIsLoading(false))
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     // set obserbar on user
     useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
+       const unSubscribe= onAuthStateChanged(auth, (user) => {
             if (user) {
               setUser(user)
             } else {
@@ -73,6 +52,8 @@ const useFirebase = () => {
             }
             setIsLoading(false)
           });
+
+          return ()=>unSubscribe;
     },[])
 
     // logout system
@@ -99,6 +80,7 @@ const useFirebase = () => {
         setIsLoading,
         googleSignIn,
         createNewUser,
+        updateUserName,
         loginUser,
         Logout,
     }

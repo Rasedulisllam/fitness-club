@@ -11,6 +11,9 @@ import Login from './pages/authentication/Login/Login';
 import Register from './pages/authentication/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import Blogs from './pages/Blogs/Blogs';
+import Services from './pages/Services/Services';
+import PrivateRoute from './pages/authentication/PrivateRoute/PrivateRoute';
+import Trainers from './pages/Trainers/Trainers';
 
 function App() {
   return (
@@ -25,8 +28,14 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
-            <Route path='/serviceDetail/:serviceKey'>
+            <Route path='/services'>
+              <Services></Services>
+            </Route>
+            <PrivateRoute path='/serviceDetail/:serviceKey'>
               <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
+            <Route path='/trainers'>
+              <Trainers></Trainers>
             </Route>
             <Route path='/blogs'>
               <Blogs></Blogs>

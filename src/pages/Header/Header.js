@@ -26,8 +26,8 @@ const Header = () => {
                 navbarScroll
                 >
                     <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/service">Service</Nav.Link>
-                    <Nav.Link as={Link} to="/tips">Tips &#38; Gellary</Nav.Link>
+                    <Nav.Link as={Link} to="/services">Service</Nav.Link>
+                    <Nav.Link as={Link} to="/trainers">Trainers</Nav.Link>
                     <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                 </Nav>
                 <Nav className='align-items-center fw-bold'>
