@@ -44,6 +44,7 @@ const useFirebase = () => {
 
     // set obserbar on user
     useEffect(()=>{
+        setIsLoading(true)
        const unSubscribe= onAuthStateChanged(auth, (user) => {
             if (user) {
               setUser(user)
