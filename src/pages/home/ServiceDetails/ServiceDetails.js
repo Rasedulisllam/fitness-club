@@ -2,18 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import {CgShoppingCart} from 'react-icons/cg'
 import { useHistory, useParams } from 'react-router';
-import useServices from '../../../Hooks/useServices';
+// import useServices from '../../../Hooks/useServices';
 
 const ServiceDetails = () => {
     const [service,setService]=useState({});
-    const {services}=useServices();
+    // const {services}=useServices();
     const {serviceKey}=useParams();
     const history=useHistory();
 
-    useEffect(()=>{
-        const displayService=services?.find(service => service.key===parseFloat(serviceKey));
-        setService(displayService)
-    },[services]) 
+    // useEffect(()=>{
+    //     const displayService=services?.find(service => service.key===parseFloat(serviceKey));
+    //     setService(displayService)
+    // },[services])
+    
+    useEffect(() => {
+        fetch('/services.json')
+        .then(res=>res.json())
+        .then(data=>{ 
+        const p=data.find(p=>p.key===parseFloat(serviceKey))
+        setService(p)
+        })
+        
+        },[serviceKey])
 
     const handleGoBack=()=>{
         history.push('/')

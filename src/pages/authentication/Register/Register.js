@@ -43,7 +43,7 @@ const Register = () => {
     createNewUser(data)
         .then((createResult) => {
           setUser(createResult.user)
-          updateUserName(name)
+          updateUserName(createResult.user,name)
           history.push(redirect_url)
         })
         .catch((error) => {
@@ -129,3 +129,6 @@ const Register = () => {
 };
 
 export default Register;
+
+
+

@@ -13,7 +13,7 @@ const Blogs = () => {
             .then(res => res.json())
             .then(data => setBlogs(data))
     },[])
-    console.log(blogs)
+    // console.log(blogs)
     return (
         <div className='bg-dark'>
             <SectionHeader>Our Blogs</SectionHeader>

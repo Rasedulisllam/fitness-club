@@ -18,11 +18,11 @@ const useFirebase = () => {
     }
 
     // update user profile name
-    const updateUserName=(name)=>{
+    const updateUserName=(details,name)=>{
         updateProfile(auth.currentUser, {
             displayName:name
           }).then((res) => {
-              auth.getInstance().getCurrentUser().reload()
+            setUser({...details,displayName: name})
           }).catch((error) => {
             setErr(error.message)
           });
@@ -88,3 +88,28 @@ const useFirebase = () => {
 };
 
 export default useFirebase;
+
+
+
+
+
+// const registerNewUser = (email, password) => {
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then(result => {
+//       const user = result.user;
+//       console.log(user);
+//       setError('');
+//       verifyEmail();
+//       setUserName(result.user);
+//     })
+//     .catch(error => {
+//       setError(error.message);
+//     })
+// }
+
+// const setUserName = (details) => {
+//   updateProfile(auth.currentUser, { displayName: name })
+//     .then(result => {
+//     setUser({...details,displayName: name})
+//     })
+// }
